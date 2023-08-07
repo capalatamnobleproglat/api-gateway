@@ -23,9 +23,21 @@ spring:
             - Path=/orders/**
 
 server:
-  port: 8083
+  port: 8084
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: SpringMicroservices
+  resource: user-service
+  public-client: true
+  security-constraints[0]:
+    authRoles:
+      - user
+    securityCollections[0]:
+      patterns:
+        - /users/*
