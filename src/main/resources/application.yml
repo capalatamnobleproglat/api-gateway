@@ -21,6 +21,12 @@ spring:
           uri: lb://order-service
           predicates:
             - Path=/orders/**
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/gatewayservice
+          jwk-set-uri: http://localhost:8080/realms/gatewayservice/protocol/openid-connect/certs
 
 server:
   port: 8084
@@ -29,15 +35,3 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-
-keycloak:
-  auth-server-url: http://localhost:8080/auth
-  realm: SpringMicroservices
-  resource: user-service
-  public-client: true
-  security-constraints[0]:
-    authRoles:
-      - user
-    securityCollections[0]:
-      patterns:
-        - /users/*
