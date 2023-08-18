@@ -21,6 +21,14 @@ spring:
           uri: lb://order-service
           predicates:
             - Path=/orders/**
+        - id: car-service
+          uri: lb://car-service
+          predicates:
+            - Path=/cars/**
+        - id: sale-service
+          uri: lb://sale-service
+          predicates:
+            - Path=/sales/**
   security:
     oauth2:
       resourceserver:
