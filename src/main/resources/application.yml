@@ -21,15 +21,9 @@ spring:
           uri: lb://order-service
           predicates:
             - Path=/orders/**
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/gatewayservice
-          jwk-set-uri: http://localhost:8080/realms/gatewayservice/protocol/openid-connect/certs
 
 server:
-  port: 8084
+  port: 8083
 
 eureka:
   client:
